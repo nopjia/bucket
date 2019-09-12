@@ -5,9 +5,8 @@
   <style type="text/css">
     body {
       margin: 0;
-      height: 100%;
-      width: 100%;
-      background-color: #F1F1EC;
+    }
+    .section {
       display: flex;
       flex-wrap: wrap;
     }
@@ -28,9 +27,60 @@
   </style>
 </head>
 <body>
+  <div id="section1" class="section" style="background-color: #f5f7f2">
+    <!-- <h1>#f5f7f2</h1> -->
+  </div>
+
+  <div id="section2" class="section" style="background-color: #F1F1EC">
+    <!-- <h1>#F1F1EC</h1> -->
+  </div>
+
 <script type="text/javascript">
 
-const COLORS = [
+const COLORS1 = [
+  {
+    name: "Bit of Sugar",
+    code: "PR-W14",
+    color: "#F3F2ED",
+  },
+  {
+    name: "Frost",
+    code: "57",
+    color: "#EEF0EE",
+  },
+  {
+    name: "Polar Bear",
+    code: "75",
+    color: "#F5F3ED",
+  },
+  {
+    name: "New House White",
+    code: "RD-W10",
+    color: "#F1ECE8"
+  },
+  {
+    name: "Silence",
+    code: "N410-1",
+    color: "#E9EDE6",
+  },
+  {
+    name: "Crystal Cut",
+    code: "PR-W13",
+    color: "#F8F4EE",
+  },
+  {
+    name: "Unwind",
+    code: "GR-W05",
+    color: "#F1F8EE",
+  },
+  {
+    name: "Calcium",
+    code: "GR-W10",
+    color: "#F1F4EA",
+  },
+];
+
+const COLORS2 = [
   {
     name: "Bit of Sugar",
     code: "PR-W14",
@@ -90,14 +140,21 @@ const createChip = (data) => {
   div.innerHTML = "";
   div.innerHTML += `<p>${data.name}</p>`;
   div.innerHTML += `<p><a href="https://www.behr.com/consumer/ColorDetailView/${data.code}">${data.code}</a></p>`;
+  div.innerHTML += `<p>${data.color}</a></p>`;
   div.onclick = () => {
     div.classList.toggle("suppress");
   };
   return div;
 };
 
-COLORS.forEach((data) => {
-  document.body.append(createChip(data));
+const section1 = document.getElementById("section1");
+COLORS1.forEach((data) => {
+  section1.append(createChip(data));
+});
+
+const section2 = document.getElementById("section2");
+COLORS2.forEach((data) => {
+  section2.append(createChip(data));
 });
 
 </script>
