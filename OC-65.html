@@ -22,35 +22,84 @@
     .chip.suppress {
       background: none !important;
     }
+    a {
+      color: black;
+    }
   </style>
 </head>
 <body>
 <script type="text/javascript">
-const COLORS = {
-  "PR-W14 BIT OF SUGAR": "#F3F2EE",
-  "PR-W14U BIT OF SUGAR": "#F4F3F0",
-  "57 FROST": "#EFF0EE",
-  "57U FROST": "#EFF0EE",
-  "75U POLAR BEAR": "#F5F4EE",
-  "75 POLAR BEAR": "#F7F4EE",
-  "RD-W10 NEW HOUSE WHITE": "#F2EEEA",
-  "RD-W10U NEW HOUSE WHITE": "#F2EEE9",
-  "N410-1 SILENCE": "#EBEFE8",
-  "PR-W13U CRYSTAL CUT": "#F8F5F0",
-};
-const createChip = (color, name) => {
+
+const COLORS = [
+  {
+    name: "Bit of Sugar",
+    code: "PR-W14",
+    color: "#F3F2EE",
+  },
+  {
+    name: "Bit of Sugar",
+    code: "PR-W14U",
+    color: "#F4F3F0",
+  },
+  {
+    name: "Frost",
+    code: "57",
+    color: "#EFF0EE",
+  },
+  {
+    name: "Frost",
+    code: "57U",
+    color: "#EFF0EE",
+  },
+  {
+    name: "Polar Bear",
+    code: "75U",
+    color: "#F5F4EE",
+  },
+  {
+    name: "Polar Bear",
+    code: "75",
+    color: "#F7F4EE",
+  },
+  {
+    name: "New House White",
+    code: "RD-W10",
+    color: "#F2EEEA",
+  },
+  {
+    name: "New House White",
+    code: "RD-W10U",
+    color: "#F2EEE9",
+  },
+  {
+    name: "Silence",
+    code: "N410-1",
+    color: "#EBEFE8",
+  },
+  {
+    name: "Crystal Cut",
+    code: "PR-W13U",
+    color: "#F8F5F0",
+  },
+];
+
+const createChip = (data) => {
   const div = document.createElement("div");
   div.classList.add("chip");
-  div.style.backgroundColor = color;
-  div.innerText = name;
+  div.style.backgroundColor = data.color;
+  div.innerHTML = "";
+  div.innerHTML += `<p>${data.name}</p>`;
+  div.innerHTML += `<p><a href="https://www.behr.com/consumer/ColorDetailView/${data.code}">${data.code}</a></p>`;
   div.onclick = () => {
     div.classList.toggle("suppress");
   };
   return div;
 };
-Object.keys(COLORS).forEach((name) => {
-  document.body.append(createChip(COLORS[name], name));
+
+COLORS.forEach((data) => {
+  document.body.append(createChip(data));
 });
+
 </script>
 </body>
 </html>
