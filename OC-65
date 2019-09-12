@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    body {
+      margin: 0;
+      height: 100%;
+      width: 100%;
+      background-color: #F1F1EC;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .chip {
+      width: 240px;
+      height: 240px;
+      margin: 30px;
+      padding: 30px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .chip.suppress {
+      background: none !important;
+    }
+  </style>
+</head>
+<body>
+<script type="text/javascript">
+const COLORS = {
+  "PR-W14 BIT OF SUGAR": "#F3F2EE",
+  "PR-W14U BIT OF SUGAR": "#F4F3F0",
+  "57 FROST": "#EFF0EE",
+  "57U FROST": "#EFF0EE",
+  "75U POLAR BEAR": "#F5F4EE",
+  "75 POLAR BEAR": "#F7F4EE",
+  "RD-W10 NEW HOUSE WHITE": "#F2EEEA",
+  "RD-W10U NEW HOUSE WHITE": "#F2EEE9",
+  "N410-1 SILENCE": "#EBEFE8",
+  "PR-W13U CRYSTAL CUT": "#F8F5F0",
+};
+const createChip = (color, name) => {
+  const div = document.createElement("div");
+  div.classList.add("chip");
+  div.style.backgroundColor = color;
+  div.innerText = name;
+  div.onclick = () => {
+    div.classList.toggle("suppress");
+  };
+  return div;
+};
+Object.keys(COLORS).forEach((name) => {
+  document.body.append(createChip(COLORS[name], name));
+});
+</script>
+</body>
+</html>
